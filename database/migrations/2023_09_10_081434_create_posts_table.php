@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name',50);
             $table->string('body',200);
-            $table->integer('time');
-            $table->integer('calorie');
-            $table->integer('cost');
+            $table->integer('time')->nullable();
+            $table->integer('calorie')->nullable();
+            $table->integer('cost')->nullable();
             $table->foreignId('resource_id')->constrained('resourcies');
             $table->foreignId('step_id')->constrained();
             $table->foreignId('user_id')->constrained();
