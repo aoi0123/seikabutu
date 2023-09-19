@@ -25,9 +25,18 @@
             <textarea name="post[calorie]" placeholder="カロリー"></textarea>
         </div>
         <div class="cost">
-            <h2>費用</h2>
-            <textarea name="post[cost]" placeholder="費用"></textarea>
+            <h2>コスト</h2>
+            <textarea name="post[cost]" placeholder="コスト"></textarea>
         </div>
+        <div class="cost">
+            <h2>材料</h2>
+            <textarea name="post[resource]" placeholder="材料"></textarea>
+        </div>
+        <div class="cost">
+            <h2>工程</h2>
+            <textarea name="post[step]" placeholder="工程"></textarea>
+        </div>
+        
         <input type="submit" value="保存"/>
         
         </form>

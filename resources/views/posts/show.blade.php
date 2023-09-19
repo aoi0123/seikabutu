@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
+        <title>{{ $post->name }}の作り方</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
@@ -18,10 +18,26 @@
                 <p>{{ $post->time }}</p>
                 <p>{{ $post->calorie }}</p>
                 <p>{{ $post->cost }}</p>
-                <p>{{ $post->resource_id }}</p>
+                <p>{{ $post->resource }}</p>
+                <p>{{ $post->step }}</p>
+                <p>{{ $post->user_id }}</p>
             </div>
         <div class="edit">
-            <a href="/posts/{{ $post->id }}/edit">edit</a>
+            <a href="/posts/{{ $post->id }}/edit">編集</a>
+        </div>
+        <form action={{"/comment/".$post->id}} method="post">
+            @csrf
+            <textarea name='thought'></textarea>
+            <button type='submit'>送信</button>
+            
+        </form>
+        <div class='comments'>
+            @foreach ($post->comments as $comment)
+                <div class='comment'>
+                    <h2>{{$comment->user->name}}</h2>
+                    <p class='thought'>{{ $comment->thought }}</p>
+                </div>
+            @endforeach
         </div>
         <div class="footer">
             <a href="/">戻る</a>

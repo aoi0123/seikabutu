@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/posts', [PostController::class, 'store']);
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);
+    Route::delete('/posts/{post}', [PostController::class,'delete']);
+    
+    
+    Route::get('/comments',[CommentController::class, 'c_index']);
+    Route::post('/comment/{post}',[CommentController::class,'store']);
+    ROute::get('/comments/{comment}',[CommentController::class,'c_show']);
 });
 
 require __DIR__.'/auth.php';

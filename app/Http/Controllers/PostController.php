@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 
@@ -25,10 +27,10 @@ class PostController extends Controller
     return view('posts.create');
     }
     
-    public function store(Request $request, Post $post)
+    public function store(Request $request, Post $post,User $user)
     {
+    $post->user_id=\Auth::id();
     $input = $request['post'];
-    $input += ['resource_id' => 1,'step_id' => 1, 'user_id'=>Auth::id()];
     $post->fill($input)->save();
     return redirect('/posts/' . $post->id);
     }
@@ -45,4 +47,11 @@ class PostController extends Controller
 
     return redirect('/posts/' . $post->id);
     }
+    
+    public function delete(Post $post)
+    {
+    $post->delete();
+    return redirect('/');
+    }
+    
 }

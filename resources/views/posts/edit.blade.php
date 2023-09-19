@@ -2,10 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Posts</title>
+        <title>編集画面</title>
     </head>
     <body>
-        <h1 class="title">編集画面</h1>
+        <h1 class="title">{{ $post->name }}の編集</h1>
         <div class="content">
             <form action="/posts/{{ $post->id }}" method="POST">
                 @csrf
@@ -27,9 +27,10 @@
                 <input type='integer' name='post[calorie]' value="{{ $post->calorie }}">
             </div>
             <div class="cost">
-                <h2>費用</h2>
+                <h2>コスト</h2>
                 <input type='integer' name='post[cost]' value="{{ $post->cost }}">
             </div>
+            
             <input type="submit" value="保存"/>
         
             </form>
