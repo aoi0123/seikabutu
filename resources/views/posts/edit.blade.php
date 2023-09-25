@@ -30,6 +30,14 @@
                 <h2>コスト</h2>
                 <input type='integer' name='post[cost]' value="{{ $post->cost }}">
             </div>
+            <div class="cost">
+                <h2>材料</h2>
+                <input type='integer' name='post[resource]' value="{{ $post->resource }}">
+            </div>
+            <div class="cost">
+                <h2>工程</h2>
+                <input type='integer' name='post[step]' value="{{ $post->step }}">
+            </div>
             
             <input type="submit" value="保存"/>
         

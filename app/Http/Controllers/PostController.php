@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Like;
+use App\Models\Want;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 
@@ -53,5 +55,6 @@ class PostController extends Controller
     $post->delete();
     return redirect('/');
     }
+    
     
 }
