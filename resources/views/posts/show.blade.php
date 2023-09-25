@@ -37,8 +37,14 @@
                     <h2>{{$comment->user->name}}</h2>
                     <p class='thought'>{{ $comment->thought }}</p>
                 </div>
+                <div>
+                    @if($post->is_liked_by_auth_user())
+                        <a href="{{ route('post.unlike', ['post' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                    @else
+                        <a href="{{ route('post.like', ['post' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                    @endif
+                </div>
             @endforeach
-        </div>
         <div class="footer">
             <a href="/">戻る</a>
         </div>

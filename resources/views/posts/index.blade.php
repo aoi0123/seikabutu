@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>スイーツ日記</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
-        <h1>スイーツ日記</h1>
+<x-app-layout>
+        <h1 class='text-red-500'>スイーツ日記</h1>
         <a href='/posts/create'>create</a>
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
-                   <a href="/posts/{{ $post->id }}"> <h2 class='name'>{{ $post->name }}</h2></a>
+                   <a href="/posts/{{ $post->id }}"> <h2 class='name text-4xl'>{{ $post->name }}</h2></a>
                     <p class='body'>{{ $post->body }}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                         @csrf
@@ -21,6 +13,13 @@
                     </form>
                 </div>
             @endforeach
+        </div>
+        <div class='wants'>
+                <div class='want'>
+                    <h3 class='body'>
+                        <a href="/wants/">リクエスト一覧</a>
+                    </h3>
+                </div>
         </div>
         <div class='paginate'>
             {{ $posts->links() }}
@@ -34,5 +33,4 @@
                 }
             }
         </script>
-    </body>
-</html>
+</x-app-layout>

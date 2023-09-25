@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\WantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,10 +39,18 @@ Route::middleware('auth')->group(function () {
     Route::put('/posts/{post}', [PostController::class, 'update']);
     Route::delete('/posts/{post}', [PostController::class,'delete']);
     
+    Route::get('/posts/like/{post}',[LikeController::class,'like'])->name('post.like');
+    Route::get('/posts/unlike/{post}',[LikeController::class,'unlike'])->name('post.unlike');
+    Route::post('/likes',[LikeController::class,'store']);
     
     Route::get('/comments',[CommentController::class, 'c_index']);
     Route::post('/comment/{post}',[CommentController::class,'store']);
-    ROute::get('/comments/{comment}',[CommentController::class,'c_show']);
+    Route::get('/comments/{comment}',[CommentController::class,'c_show']);
+    
+    Route::get('/wants', [WantController::class,'index']);
+    Route::get('/wants/create',[WantController::class,'create']);
+    Route::get('/wants/{want}',[WantController::class,'show']);
+    Route::post('/wants', [WantController::class, 'store']);
 });
 
 require __DIR__.'/auth.php';
